@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Predictor</title>
+</head>
+<body>
+    <h1>Heart Disease Predictor</h1>
+<form action="/predict" method="post">
+    <input type="number" name="Age" placeholder="Age" required><br><br>
+    <input type="number" name="Sex" placeholder="Sex (1=M, 0=F)" required><br><br>
+    <input type="number" name="ChestPain" placeholder="Chest pain type" required><br><br>
+    <input type="number" name="BP" placeholder="BP" required><br><br>
+    <input type="number" name="Chol" placeholder="Cholesterol" required><br><br>
+    <input type="number" name="FBS" placeholder="FBS over 120" required><br><br>
+    <input type="number" name="EKG" placeholder="EKG results" required><br><br>
+    <input type="number" name="MaxHR" placeholder="Max HR" required><br><br>
+    <input type="number" name="Angina" placeholder="Exercise angina" required><br><br>
+    <input type="number" name="Slope" placeholder="Slope of ST" required><br><br>
+    <input type="number" name="Vessels" placeholder="Number of vessels" required><br><br>
+    <input type="number" name="Thallium" placeholder="Thallium" required><br><br><br>
+    
+    <button type="submit">Predict</button>
+</form>
+
+<h2>{{ prediction_text }}</h2>
+</body>
+</html>

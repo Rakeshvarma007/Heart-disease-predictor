@@ -2,27 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart Disease Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Heart Disease Predictor</h1>
-<form action="/predict" method="post">
-    <input type="number" name="Age" placeholder="Age" required><br><br>
-    <input type="number" name="Sex" placeholder="Sex (1=M, 0=F)" required><br><br>
-    <input type="number" name="ChestPain" placeholder="Chest pain type" required><br><br>
-    <input type="number" name="BP" placeholder="BP" required><br><br>
-    <input type="number" name="Chol" placeholder="Cholesterol" required><br><br>
-    <input type="number" name="FBS" placeholder="FBS over 120" required><br><br>
-    <input type="number" name="EKG" placeholder="EKG results" required><br><br>
-    <input type="number" name="MaxHR" placeholder="Max HR" required><br><br>
-    <input type="number" name="Angina" placeholder="Exercise angina" required><br><br>
-    <input type="number" name="Slope" placeholder="Slope of ST" required><br><br>
-    <input type="number" name="Vessels" placeholder="Number of vessels" required><br><br>
-    <input type="number" name="Thallium" placeholder="Thallium" required><br><br><br>
-    
-    <button type="submit">Predict</button>
-</form>
+<body class="bg-light">
 
-<h2>{{ prediction_text }}</h2>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                
+                <div class="card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white text-center py-3">
+                        <h2 class="mb-0">Heart Disease Predictor</h2>
+                        <small>Enter clinical data for prediction</small>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <form action="/predict" method="POST">
+                            
+                            <div class="row g-3">
+                                <div class="col-6">
+                                    <label class="form-label">Age</label>
+                                    <input type="number" name="age" class="form-control" placeholder="Years" required>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label">Sex</label>
+                                    <select name="sex" class="form-select">
+                                        <option value="1">Male</option>
+                                        <option value="0">Female</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label class="form-label">Chest Pain Type</label>
+                                    <select name="cp" class="form-select">
+                                        <option value="0">Typical Angina</option>
+                                        <option value="1">Atypical Angina</option>
+                                        <option value="2">Non-anginal Pain</option>
+                                        <option value="3">Asymptomatic</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">Resting BP</label>
+                                    <input type="number" name="trestbps" class="form-control" placeholder="mm Hg" required>
+                                </div>
+
+                                <div class="col-6">
+                                    <label class="form-label">Cholesterol</label>
+                                    <input type="number" name="chol" class="form-control" placeholder="mg/dl" required>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100 mt-4 py-2 fw-bold">
+                                Run Prediction Analysis
+                            </button>
+                        </form>
+                    </div>
+
+                    {% if prediction_text %}
+                    <div class="card-footer bg-white border-0 p-4 text-center">
+                        <div class="alert alert-info border-0 shadow-sm">
+                            <h4 class="alert-heading">Result</h4>
+                            <hr>
+                            <p class="mb-0 fs-5 font-monospace">{{ prediction_text }}</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <p class="text-center text-muted mt-4" style="font-size: 0.8rem;">
+                    &copy; 2026 Heart Disease Prediction System
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
